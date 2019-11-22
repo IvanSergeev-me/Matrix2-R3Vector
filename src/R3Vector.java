@@ -32,6 +32,7 @@ public class R3Vector {
 		if (comm==4)scalarMult(vector1,vector2);
 		if (comm==5)vectorMult(vector1,vector2);
 		if (comm==6)smeshMult(vector1,vector2);
+		else addition(addition(vector1,vector1),vector1);
 	}
 	static double[] addition(double[] v1 ,double[] v2) {
 		double[] c = new double [3];

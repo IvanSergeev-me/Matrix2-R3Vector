@@ -15,31 +15,42 @@ public class Matrix2 {
 		int[][] matrix1 = new int[2][2];
 		matrix1 = input(matrix1);
 		int[][] matrix2 = new int[2][2];
-		System.out.println("Введите комманду: ");
-		int comm = s.nextInt();
-		if (comm == 1) addition(matrix1,matrix2);
-		if (comm == 2) subtraction(matrix1,matrix2);
-		if (comm == 3) {
-			System.out.println("Введите число для умножения: ");
-			int pr = s.nextInt();
-			multiplication(matrix1,pr);
+		matrix2 = input(matrix2);
+		System.out.println("Введите комманду: (1,4-Cложение) (2-Вычитание) (3-умн. на чилсо) (5-перемножение) (6-определитель) (7-обратная матрица) ");
+		while (s.hasNextInt()) {
+			int comm = s.nextInt();
+			if (comm == 1) addition(matrix1, matrix2);
+			if (comm == 2) subtraction(matrix1, matrix2);
+			if (comm == 3) {
+				System.out.println("Введите число для умножения: ");
+				int pr = s.nextInt();
+				multiplication(matrix1, pr);
+			}
+			if (comm == 4) addition(matrix1, matrix2);
+			if (comm == 5) multWithTwo(matrix1, matrix2);
+			if (comm == 6) System.out.println(definition(matrix1));
+			if (comm == 7) revers(matrix1);
 		}
-		if (comm == 4) addition(matrix1,matrix2);
-		if (comm == 5 ) multWithTwo(matrix1,matrix2);
-		if (comm == 6 ) System.out.println(definition(matrix1));
-		if (comm == 7) revers(matrix1);
-		
+
+
+			addition(addition(matrix1, matrix1), matrix1);
+
+
+
 	}
-	static void addition(int[][] a,int[][] b) {
+	static int[][] addition(int[][] a,int[][] b) {
+		int[][] c= new int[2][2];
 		for (int m=0;m<2;m++) {
 			for (int n=0;n<2;n++) {
-				a[m][n] = a[m][n]+b[m][n];
-		        System.out.print(a[m][n] + " ");
+				c[m][n] = a[m][n]+b[m][n];
+		        System.out.print(c[m][n] + " ");
 			}
 			System.out.println();
 		}
+
+		return(c);
 	}
-	static void subtraction(int[][] a,int[][] b) {
+	static int[][] subtraction(int[][] a,int[][] b) {
 		for (int m=0;m<2;m++) {
 			for (int n=0;n<2;n++) {
 				a[m][n] = a[m][n]-b[m][n];
@@ -47,8 +58,9 @@ public class Matrix2 {
 			}
 			System.out.println();
 		}
+		return(a);
 	}
-	static void multiplication(int[][] a,int ch) {
+	static int[][] multiplication(int[][] a,int ch) {
 		for (int m=0;m<2;m++) {
 			for (int n=0;n<2;n++) {
 				a[m][n] = a[m][n]*ch;
@@ -56,6 +68,7 @@ public class Matrix2 {
 			}
 			System.out.println();
 		}
+		return (a);
 	}
 	static void multWithTwo(int[][] a,int[][] b) {
 		int[][] c = new int[2][2];
